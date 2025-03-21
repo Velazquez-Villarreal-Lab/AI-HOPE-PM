@@ -187,7 +187,7 @@ def main():
     df = assign_social_factor(df, dict_A, dict_B, dict_C, "health_literacy")
 
     # Save the modified data
-    df.to_csv("data/SocialFactor_COAD/pt_xena_metadata.tsv", sep="\t", index=False)
+    df.to_csv("data/SocialFactor_COAD/pt_xena_metadata.tsv", sep="\t")
     print("Updated file saved as data/SocialFactor_COAD/pt_xena_metadata.tsv")
 
 

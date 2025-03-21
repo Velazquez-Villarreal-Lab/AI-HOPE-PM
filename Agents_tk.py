@@ -630,7 +630,6 @@ class Supervisor:
             value_list = [x.strip() for x in value_str.strip('|').split(',')]
         else:
             value_list.append(value_str)
-        
         for value in value_list:
             if ptypes.is_numeric_dtype(metadata_df[attribute_id]):
                 max_value = metadata_df[attribute_id].max()
@@ -645,6 +644,7 @@ class Supervisor:
             else:
                 unique_values = metadata_df[attribute_id].unique()
                 valid_list = []
+                
                 for item in unique_values:
                     if not isinstance(item, type(pd.NA)):
                         if '|' in item:
@@ -655,7 +655,7 @@ class Supervisor:
                         else:
                             if item not in valid_list:
                                 valid_list.append(item.strip())
-
+                
                 if not (value in valid_list):
                     self.tk_print(f'[AI] {value} is not in [ {", ".join(valid_list)} ]. Use "explore data" to check valid values for the data attributes.')
                     return None
@@ -693,7 +693,9 @@ class Supervisor:
                 return None
             elif opr == "==" or opr == "in":
                 sample_list=[]
+                # print(zip(metadata_df.index, metadata_df[attribute_id]))
                 for index, item in zip(metadata_df.index, metadata_df[attribute_id]):
+                    
                     if not isinstance(item, type(pd.NA)):
                         if '|' in item:
                             substrings = item.split('|')
